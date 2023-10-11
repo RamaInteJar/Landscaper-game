@@ -19,3 +19,16 @@ def display_actions():
     print("\nAvailable Actions:")
     for i, action in enumerate(actions):
         print(f"{i + 1}. {action['name']}")
+
+def handle_input():
+    while True:
+        try:
+            choice = int(input("\nEnter your choice (or 0 to quit): "))
+            if choice == 0:
+                quit_game()
+            elif 1 <= choice <= len(actions):
+                return choice
+            else:
+                print("Invalid choice. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
