@@ -14,3 +14,8 @@ actions = [
     {"name": "Hire a team of starving students", "cost": 500, "earnings": 250},
     {"name": "Use a team of starving students", "earnings": 250}
 ]
+
+def display_actions():
+    print("\nAvailable Actions:")
+    for i, action in enumerate(actions):
+        print(f"{i + 1}. {action['name']}")
