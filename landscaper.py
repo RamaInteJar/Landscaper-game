@@ -32,3 +32,32 @@ def handle_input():
                 print("Invalid choice. Please try again.")
         except ValueError:
             print("Invalid input. Please enter a number.")
+
+def perform_action(choice):
+    global money
+    global tools
+
+    action = actions[choice - 1]
+
+    if "cost" in action and action["cost"] > money:
+        print("You don't have enough money for this action.")
+        return
+
+    if "cost" in action:
+        money -= action["cost"]
+        tools.append(action["name"])
+
+    money += action["earnings"]
+
+    print(f"\nYou {action['name']} and earned ${action['earnings']}!")
+
+    if money >= win_amount and "team" in tools:
+        print(f"\nCongratulations! You've won the game with ${money} and the following tools:")
+        for tool in tools:
+            print(f"- {tool}")
+        quit_game()
+
+# Function to quit the game
+def quit_game():
+    print("\nThank you for playing!")
+    exit()
