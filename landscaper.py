@@ -61,3 +61,8 @@ def perform_action(choice):
 def quit_game():
     print("\nThank you for playing!")
     exit()
+
+while True:
+    display_actions()
+    choice = handle_input()
+    perform_action(choice)
